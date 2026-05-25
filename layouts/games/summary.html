@@ -1,0 +1,17 @@
+{{ $url := .Params.externalURL | default .RelPermalink }}
+{{ $external := ne .Params.externalURL "" }}
+<div class="work work-summary">
+  {{ if .Params.thumbnail }}
+  <div class="work-image">
+    <a href="{{ $url }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>
+      <img src="{{ .Params.thumbnail | relURL }}" alt="{{ .Title }}" />
+    </a>
+  </div>
+  {{ end }}
+  <div class="work-content">
+    <h2 class="work-title">
+      <a href="{{ $url }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Title }}</a>
+    </h2>
+    {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+  </div>
+</div>

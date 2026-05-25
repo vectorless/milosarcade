@@ -1,0 +1,81 @@
+{{ define "title" }}{{ .Site.Title }}{{ end }}
+{{ define "header_css" }}
+<style>
+  .logo.logo-text {
+    display: block;
+    width: auto;
+  }
+  .logo.logo-text a {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1c1d3e;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .hero-image.hero-compact {
+    height: 180px;
+    padding-top: 70px;
+  }
+  .hero-image.hero-compact .hero-text {
+    text-align: center;
+  }
+  .hero-image.hero-compact .hero-text p {
+    font-size: 2rem;
+    font-weight: 700;
+    width: 100%;
+    margin: 0;
+  }
+  @media (min-width: 768px) {
+    .hero-image.hero-compact .hero-text p {
+      font-size: 2.8rem;
+    }
+  }
+  .page-home #home {
+    padding-top: 2rem !important;
+  }
+</style>
+{{ end }}
+{{ define "body_classes" }}page-home{{ end }}
+{{ define "header_classes" }}header-transparent{{ end }}
+
+{{ define "meta_tags" }}
+<meta name="description" content="{{ .Site.Params.homepage_meta_tags.meta_description }}" />
+<meta property="og:title" content="{{ .Site.Params.homepage_meta_tags.meta_og_title }}" />
+<meta property="og:type" content="{{ .Site.Params.homepage_meta_tags.meta_og_type }}" />
+<meta property="og:url" content="{{ .Site.Params.homepage_meta_tags.meta_og_url }}" />
+<meta property="og:image" content="{{ .Site.Params.homepage_meta_tags.meta_og_image }}" />
+<meta property="og:description" content="{{ .Site.Params.homepage_meta_tags.meta_og_description }}" />
+{{ end }}
+
+{{ define "main" }}
+
+{{ $hero := .Site.Params.homepage_hero }}
+<div class="hero-image hero-compact" style="background-image: url('{{ $hero.background | relURL }}');">
+  <div class="container">
+    <div class="hero-text">
+      <p>{{ $hero.subheading }}</p>
+    </div>
+  </div>
+</div>
+
+<div id="home" class="container pt-8 pb-8 pt-md-14 pb-md-14">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <h2 class="text-center mb-5">Games</h2>
+    </div>
+    {{ $games := where .Site.RegularPages "Section" "games" }}
+    {{ range $games.ByWeight }}
+    <div class="col-12 col-md-6 col-lg-4 mb-3">
+      {{ .Render "summary" }}
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}
+
+{{ define "footer_js" }}{{ end }}

@@ -1,0 +1,40 @@
+baseURL = "https://milosarcade.com/"
+languageCode = "en-us"
+title = "Milo's Arcade"
+theme = "hugo-hero-theme"
+
+disableKinds = ["section", "taxonomy", "term", "rss"]
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.92.0"
+
+[params]
+  google_analytics_id = ""
+
+  [params.logo]
+    mobile = "images/logo-mobile.svg"
+    mobile_height = "36px"
+    mobile_width = "36px"
+    desktop = "images/logo.svg"
+    desktop_height = "29px"
+    desktop_width = "217px"
+    alt = "Milo's Arcade"
+
+  [params.homepage_meta_tags]
+    meta_description = "A collection of browser games by Milo, each hosted on GitHub Pages."
+    meta_og_title = "Milo's Arcade"
+    meta_og_type = "website"
+    meta_og_url = ""
+    meta_og_image = ""
+    meta_og_description = "A collection of browser games by Milo, each hosted on GitHub Pages."
+    meta_twitter_card = "summary"
+    meta_twitter_site = ""
+    meta_twitter_creator = ""
+
+  [params.homepage_hero]
+    heading = "Milo's Arcade"
+    subheading = "A collection of browser games"
+    background = "https://source.unsplash.com/random/1600x900/?arcade,neon"
+
